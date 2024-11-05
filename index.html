@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loop de Vídeos</title>
+    <style>
+      body {
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .video-container {
+        width: 100%; /* 70% da largura da viewport */
+        height: 100vh; /* 100% da altura da viewport */
+      }
+
+      .video {
+        width: 1080px;
+        height: 1800px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-container">
+      <iframe
+        class="video"
+        id="videoFrame"
+        src="https://www.youtube.com/embed/SrmB0zoRpg0?autoplay=1&mute=1&controls=0"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="content">
+        <h1>Bem vindo!</h1>
+        <p>Sigam as regras</p>
+        <p>Sigam as regras</p>
+        <p>Sigam as regras</p>
+        <p>Sigam as regras</p>
+        <p>Sigam as regras</p>
+    </div>
+
+    <script>
+      // Array de URLs dos vídeos
+      const videos = [
+        "https://www.youtube.com/embed/UtLEcbx9Ebk?autoplay=1&mute=1&controls=0",
+        "https://www.youtube.com/embed/SrmB0zoRpg0?autoplay=1&mute=1&controls=0"
+      ];
+
+      let currentVideoIndex = 0;
+      const videoFrame = document.getElementById("videoFrame");
+
+      // Função para trocar o vídeo
+      function playNextVideo() {
+        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+        videoFrame.src = videos[currentVideoIndex];
+      }
+
+      // Troca de vídeo a cada 10 segundos
+      setInterval(playNextVideo, 10000); // 10000 ms = 10 segundos
+    </script>
+  </body>
+</html>
